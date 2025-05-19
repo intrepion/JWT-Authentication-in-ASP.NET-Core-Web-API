@@ -28,6 +28,16 @@ builder.Services.AddAuthentication(opt =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("EnableCORS", builder => 
+    { 
+        builder.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod(); 
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -41,6 +51,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseCors("EnableCORS");
 app.UseAuthentication();
 app.UseAuthorization();
 
