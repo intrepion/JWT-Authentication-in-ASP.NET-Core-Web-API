@@ -18,11 +18,11 @@ public class AuthController : Controller
         }
         if (user.UserName == "johndoe" && user.Password == "def@123")
         {
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
-            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("e6FGG2*jyrC@VF9wXsbUftAcYU9@fonNyQ6BgofXFatWfm7nG886VTK84sFcx-4PyU9AKc7PfPzkMuWq4BLFeJm37qousFKLvc7b"));
+            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha512);
             var tokeOptions = new JwtSecurityToken(
-                issuer: "https://localhost:5001",
-                audience: "https://localhost:5001",
+                issuer: "https://localhost:7262",
+                audience: "https://localhost:7262",
                 claims: new List<Claim>(),
                 expires: DateTime.Now.AddMinutes(5),
                 signingCredentials: signinCredentials
